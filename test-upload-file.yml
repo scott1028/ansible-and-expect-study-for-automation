@@ -1,0 +1,12 @@
+---
+- hosts: 192.168.7.2
+  tasks:
+    - copy:
+        src: ./README.md
+        dest: /tmp/README.md
+    - copy:
+        src: ./
+        dest: /tmp/
+    - shell: cd /tmp && ls -al
+...
+# Copy file -> Execute Shell Command.
