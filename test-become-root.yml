@@ -1,0 +1,11 @@
+---
+- hosts: 1.2.3.4
+  become: yes
+  become_user: root
+  become_method: su
+  tasks:
+    - shell: |
+        whoami
+...
+# With Inventory:
+#   $HOST ansible_port=22222 ansible_user=scott ansible_ssh_pass=XXXXXXXXXXXX ansible_become_pass=XXXXXXXXXXXX
