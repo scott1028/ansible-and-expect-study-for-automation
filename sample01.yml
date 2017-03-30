@@ -1,0 +1,20 @@
+---
+- hosts: dev.example.com
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars_prompt:
+    - name: "ansible_ssh_pass"
+      prompt: "ssh remote password?"
+    - name: "ansible_become_pass"
+      prompt: "sudo password?"
+  tasks:
+    - copy:
+        src: "{{ file }}"
+        dest: /tmp/
+    - shell: |
+        cd /var/www/web
+        mv /tmp/{{ file }} /var/www/web
+        tar -vxf {{ file }}
+...
+# ansible-playbook sample01.yml -i users.cfg -vvv -e file=sample.tar.gz2
