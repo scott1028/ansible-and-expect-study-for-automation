@@ -1,0 +1,18 @@
+---
+- hosts: "*"
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    ansible_ssh_pass: "{{ ssh_pass }}"
+    ansible_become_pass: "{{ ssh_pass }}"
+  vars_prompt:
+    - name: "ssh_pass"
+      prompt: "ssh password?"
+  tasks:
+    - shell: |
+        apt-get install ntp -y
+        ntpdate -s ntp.ubuntu.com
+        date
+...
+# ex: ansible-playbook aws.yml -i users.cfg -vvv
