@@ -14,5 +14,12 @@
         apt-get install ntp -y
         ntpdate -s ntp.ubuntu.com
         date
+    # - copy:
+    #     src: "{{ file }}"
+    #     dest: /tmp/
+    # - shell: |
+    #     cd /var/www/web
+    #     mv /tmp/{{ file }} /var/www/web
+    #     tar -vxf {{ file }}
 ...
 # ex: ansible-playbook aws.yml -i users.cfg -vvv
