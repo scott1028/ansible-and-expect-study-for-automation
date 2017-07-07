@@ -9,4 +9,4 @@
         dest: /tmp/
     - shell: cd /tmp && ls -al
 ...
-# Copy file -> Execute Shell Command.
+# `Copy file` -> `Copy file` -> `Execute Shell Command` in order.
