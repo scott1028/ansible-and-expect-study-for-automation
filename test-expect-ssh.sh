@@ -13,11 +13,14 @@ expect {
 expect {
     "rdop@gitlab-M32AA:~$ " {
         send "ls -al\r"
-        exp_continue
+        # IF last `ls -al` command is done!
+        expect "rdop@gitlab-M32AA:~$ " {
+            send "df\r"
+        }
     }
-    # IF found final file
-    "yourdomain.key" {
-        send "df\r"
+    # If no mapping any one then do-loop.
+    default {
+        exp_continue
     }
 }
 
